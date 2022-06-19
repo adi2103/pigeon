@@ -2,7 +2,7 @@
   "name": "react-app",
   "version": "0.1.0",
   "private": true,
-  "proxy": "https://pigeon-ufonia.herokuapp.com",
+  "proxy": "https://pigeon-ufonia.herokuapp.com/",
   "homepage": ".",
   "dependencies": {
     "@testing-library/jest-dom": "^5.14.1",
