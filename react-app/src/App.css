@@ -1,0 +1,336 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
+}
+
+textarea[type=text] {
+  position: relative;
+  font-family: 'Kalam', cursive;
+  outline:none;
+  border:none;
+  background: #dedede00;
+  top: -76px;
+  left: 2px;
+  font-size: 50;
+  cursor:text;
+  resize:none;
+}
+
+.number {
+  position: absolute;
+  background: #dedede;
+  top: 120px;
+  left: 505px;
+  cursor:text;
+  resize:none;
+  width: 100px;
+}
+
+.callSid {
+  position: absolute;
+  background: #ffffff;
+  left: 905px;
+  top: 250px;
+  cursor:text;
+  width: 250px;
+  font-size: large;
+}
+
+.submitButton {
+  position: absolute;
+  font-family: 'Kalam', cursive;
+  outline:none;
+  border:none;
+  background: #95959599;
+  border-radius:5px;
+  top: 115px;
+  left: 75px;
+  cursor:pointer;
+}
+
+.envelope {
+  position: relative;
+  width: 200px;
+  height: 150px;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-right: auto;
+  top: 400px;
+  left: 300px;
+  background-color: #ff8789;
+}
+
+.cover {
+  position: absolute;
+  height: 0px;
+  width: 0px;
+}
+
+.cover.top {
+  border-left: 100px solid transparent;
+  border-right: 100px solid transparent;
+  border-bottom: 75px solid transparent;
+  border-top: 75px solid #ff8789;
+  transform-origin: top;
+}
+
+.cover.bottom.right {
+  border-left: 100px solid transparent;
+  border-right: 100px solid #ff393c;
+  border-bottom: 75px solid #ff393c;
+  border-top: 75px solid transparent;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+}
+
+.cover.left {
+  border-left: 100px solid #ff5355;
+  border-radius: 100px solid transparent;
+  border-bottom: 75px solid transparent;
+  border-top: 75px solid transparent;
+  border-bottom-left-radius: 5px;
+}
+
+.letter {
+  position: relative;
+  background: #dedede;
+  width: 95%;
+  margin-left: auto;
+  margin-right: auto;
+  height: 100%;
+  border-radius: 5px;
+  box-sizing: border-box;
+  padding: 5px;
+  text-align: center;
+  font-family: 'Kalam', cursive;
+  color:black;
+  vertical-align: middle;
+}
+
+.open {
+  transform: rotateX(180deg);
+  transition: transform 0.4s ease;
+  z-index: 1;
+}
+
+.close {
+  transform: rotateX(0deg);
+  transition: transform 0.4s ease;
+  z-index: 9;
+}
+
+.submit1 {
+  animation-name: submitLetter1;
+  animation-timing-function: linear;
+  animation-duration: 1s;
+}
+
+.submit2 {
+  animation-name: submitLetter2;
+  animation-timing-function: linear;
+  animation-duration: 1s;
+}
+
+.initial {
+  transform: translateY(0px) scale(2);
+  z-index: 20;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #61dafb;
+}
+
+.reset {
+  position: absolute;
+  top: 300px;
+  left: 470px;
+  width: 100px;
+  height: 40px;
+  font-size: large;
+  font-family: 'Kalam', cursive;
+  outline:none;
+  border:none;
+  background: #95959599;
+  border-radius:5px;
+  cursor:pointer;
+}
+
+.pigeon {
+  position: absolute;
+  top: 0px;
+  left: 450px;
+  width: 200px;
+  height: 200px;
+  background-image: url('./pigeon6.jpg') ;
+  background-repeat: no-repeat;
+  z-index: -5;
+}
+
+.deliver {
+  animation-name: pigeonDeliver;
+  animation-timing-function: linear;
+  animation-delay: 0.4s;
+  animation-duration: 2s;
+}
+
+.animate {
+  animation-name: coverDeliver;
+  animation-timing-function: linear;
+  animation-delay: 0.4s;
+  animation-duration: 2s;
+}
+
+.ring {
+  position: absolute;
+  top: 0px;
+  left: 950px;
+  width: 150px;
+  height: 150px;
+  z-index: -20;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes submitLetter1 {
+  0% {
+    transform: translateY(0px) scale(2);
+  }
+  25% {
+    transform: translateY(-50px) scale(1.75);
+  }
+  50% {
+    transform: translateY(-100px) scale(1.5);
+  }
+  75% {
+    transform: translateY(-150px) scale(1.25);
+  }
+  100% {
+    transform: translateY(-150px) scale(1);
+  }
+}
+
+@keyframes submitLetter2 {
+  0% {
+    transform: translateY(-150px);
+  }
+  33% {
+    transform: translateY(-100px);
+  }
+  66% {
+    transform: translateY(-50px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
+}
+
+@keyframes coverDeliver {
+  0%{
+    transform: translateX(30px) translateY(100px) scale(0.4);
+  }
+  10%{
+    transform: translateX(80px) translateY(90px) scale(0.4);
+  }
+  20%{
+    transform: translateX(130px) translateY(90px) scale(0.4);
+  }
+  30%{
+    transform: translateX(180px) translateY(90px) scale(0.4);
+  }
+  40%{
+    transform: translateX(280px) translateY(70px) scale(0.4);
+  }
+  50%{
+    transform: translateX(380px) translateY(70px) scale(0.2);
+  }
+  60%{
+    transform: translateX(480px) translateY(75px) scale(0);
+  }
+  70%{
+    transform: translateX(580px) translateY(75px) scale(0);
+  }
+  80%{
+    transform: translateX(630px) translateY(75px) scale(0);
+  }
+  90%{
+    transform: translateX(680px) translateY(75px) scale(0);
+  }
+  100%{
+    transform: translateX(730px) translateY(75px) scale(0);
+  }
+}
+
+@keyframes pigeonDeliver {
+  0%{
+    background-image: url('./pigeon1.jpg');
+    transform: translateX(-350px);
+  }
+  10%{
+    background-image: url('./pigeon1.jpg');
+    transform: translateX(-300px);
+  }
+  20%{
+    background-image: url('./pigeon2.jpg');
+    transform: translateX(-250px);
+  }
+  30%{
+    background-image: url('./pigeon2.jpg');
+    transform: translateX(-200px);
+  }
+  40%{
+    background-image: url('./pigeon3.jpg');
+    transform: translateX(-100px);
+  }
+  50%{
+    background-image: url('./pigeon3.jpg');
+    transform: translateX(0px);
+  }
+  60%{
+    background-image: url('./pigeon4.jpg');
+    transform: translateX(100px);
+  }
+  70%{
+    background-image: url('./pigeon4.jpg');
+    transform: translateX(200px);
+  }
+  80%{
+    background-image: url('./pigeon5.jpg');
+    transform: translateX(250px);
+  }
+  90%{
+    background-image: url('./pigeon5.jpg');
+    transform: translateX(300px);
+  }
+  100%{
+    background-image: url('./pigeon6.jpg');
+    transform: translateX(350px);
+  }
+}
