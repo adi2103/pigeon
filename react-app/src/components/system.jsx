@@ -84,7 +84,7 @@ export default class System extends React.Component {
                     _________________
                     <form id="form" onSubmit={handleSubmit}>
                         <textarea id="message" type="text" rows="3" cols="20" wrap="soft" required={true} />
-                        <input id="phone-number" className="number" type="text" maxLength={15} placeholder="(xxx) xxx-xxxx" required={true} />
+                        <input id="phone-number" className="number" type="text" maxLength={15} placeholder="(+xx) xxxxxxxxxx" required={true} />
                         <input id="submit" className="submitButton" type="submit" value="Send" />
                     </form>
                 </div>
