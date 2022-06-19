@@ -3,6 +3,7 @@ import ring from '../ring.jpg';
 import axios from 'axios'
 import '../App.css';
 
+axios.defaults.baseURL = 'https://pigeon-ufonia.herokuapp.com'
 
 export default class System extends React.Component {
     handleReset = () => {
@@ -37,7 +38,7 @@ export default class System extends React.Component {
                     message: message.value
                 }
 
-                axios.post('https://2bfa-2a00-23c6-f08b-8001-f120-8aeb-1fe-2b1d.eu.ngrok.io/calls', data)
+                axios.post('/calls', data)
                     .then(response => {
                         callSid.innerText = response.data.call_sid
                         ring.src = "images/ring.gif";

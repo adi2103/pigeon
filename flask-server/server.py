@@ -2,7 +2,8 @@ from http.client import HTTPException
 import os
 import logging
 from flask import Flask, jsonify, request
-from flask_cors import CORS
+from flask.helpers import send_from_directory
+from flask_cors import CORS, cross_origin
 from twilio.rest import Client
 
 TESTING_CALL_SID = "TESTING_CALL_SID"
@@ -15,11 +16,18 @@ def create_app():
     app = Flask(
         __name__,
         static_folder='../react-app/build',
-        static_url_path='/'
+        static_url_path=''
     )
     CORS(app)
 
+    @app.route('/')
+    @cross_origin()
+    def serve():
+        """ Handle the home page """
+        return send_from_directory(app.static_folder, 'index.html')
+
     @app.route('/calls', methods = ['POST'])
+    @cross_origin()
     def handle_calls():
         """ Handle call creation requests """
         log.info("Received POST /calls request")
@@ -31,6 +39,7 @@ def create_app():
 
         account_sid = os.environ['TWILIO_ACCOUNT_SID']
         auth_token = os.environ['TWILIO_AUTH_TOKEN']
+        host = os.environ['HOST']
         client = Client(account_sid, auth_token)
 
         try:
@@ -38,7 +47,7 @@ def create_app():
                 twiml=f'<Response><Say>{message}</Say></Response>',
                 to=phone_number,
                 from_='+17432004167',
-                status_callback='https://2bfa-2a00-23c6-f08b-8001-f120-8aeb-1fe-2b1d.eu.ngrok.io/status',
+                status_callback=f'{host}/status',
                 status_callback_event=['ringing', 'answered', 'completed'],
                 status_callback_method='POST',
             )
@@ -48,10 +57,10 @@ def create_app():
         response = jsonify({'call_sid': call.sid})
         if call.sid and app.config["TESTING"] == True:
             response = jsonify({'call_sid': TESTING_CALL_SID})
-        response.headers.add('Access-Control-Allow-Origin', '*')
         return response
 
     @app.route('/status', methods = ['POST'])
+    @cross_origin()
     def handle_status():
         """ Handle call status update requests """
         log.info("Received POST /status request")
